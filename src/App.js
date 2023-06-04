@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import StudentsScore from './Students';
-import GPA from './GPA';
 import './App.css'
+import { useState, useEffect } from 'react';
+import StudentsScore from './Students.js';
+import AverageScore from './GPA.js';
 
 function App() {
   const [students, setStudents] = useState([
@@ -10,12 +10,12 @@ function App() {
     { name: 'Людмила', score: 200 },
     { name: 'Іван', score: 200 },
   ]);
-  const [averageScore, setAverageScore] = useState(0);
+  const [averagePoint, setAveragePoint] = useState(0);
   useEffect(() => {
     const scoreAverange =
       students.reduce((acc, student) => student.score + acc, 0) /
       students.length;
-    setAverageScore(scoreAverange);
+    setAveragePoint(scoreAverange);
   }, [students]);
   const inputChange = elem => {
     const { name, value } = elem.target;
@@ -32,7 +32,7 @@ function App() {
   };
   return (
     <><h1>Рейтинг студентів</h1>
-      <GPA average={averageScore} />
+      <AverageScore average={averagePoint} />
       <table className='container'>
         <tbody>
           <StudentsScore students={students} valueChange={inputChange} />

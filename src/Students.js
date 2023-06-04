@@ -1,10 +1,10 @@
 export default function StudentsScore({ students, valueChange }) {
-    const sortByScore = students.sort(
+    const sortScore = students.sort(
         (firstStudent, lastStudent) => lastStudent.score - firstStudent.score
     );
     return (
         <>
-            {sortByScore.map(({ name, score }) => (
+            {sortScore.map(({ name, score }) => (
                 <tr key={name}>
                     <td>{name}</td>
                     <td>
